@@ -4,7 +4,7 @@
 #
 Name     : R-furrr
 Version  : 0.1.0
-Release  : 5
+Release  : 6
 URL      : https://cran.r-project.org/src/contrib/furrr_0.1.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/furrr_0.1.0.tar.gz
 Summary  : Apply Mapping Functions in Parallel using Futures
@@ -19,7 +19,6 @@ BuildRequires : R-globals
 BuildRequires : R-purrr
 BuildRequires : R-rlang
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
 [![Travis build
@@ -29,21 +28,22 @@ status](https://www.r-pkg.org/badges/version/furrr)](https://cran.r-project.org/
 
 %prep
 %setup -q -c -n furrr
+cd %{_builddir}/furrr
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571834580
+export SOURCE_DATE_EPOCH=1589770765
 
 %install
-export SOURCE_DATE_EPOCH=1571834580
+export SOURCE_DATE_EPOCH=1589770765
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
